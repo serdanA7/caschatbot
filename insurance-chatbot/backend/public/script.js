@@ -124,7 +124,7 @@ chatForm.addEventListener('submit', async (e) => {
   const { msgDiv, bubble } = appendMessage('', 'bot', new Date(), true);
 
   try {
-    const res = await fetch('http://localhost:3001/ask', {
+    const res = await fetch('/ask', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ question })
