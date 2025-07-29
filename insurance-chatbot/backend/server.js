@@ -1,7 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const port = 3001;
+const path = require('path');
+const port = process.env.PORT || 3001; // Use Render's port
 
 app.use(cors());
 app.use(express.json());
@@ -87,6 +88,19 @@ app.post('/ask', (req, res) => {
   } else {
     res.json({ answer: "Sorry, I don't know the answer to that. Please contact support for more help." });
   }
+});
+
+// Serve static files from public folder
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Optional API route (for chatbot etc)
+app.get('/api/qa', (req, res) => {
+  res.json(qaPairs);
+});
+
+// Catch-all to return index.html for SPA-style routing
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.listen(port, () => {
