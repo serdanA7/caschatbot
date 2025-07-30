@@ -99,6 +99,7 @@ function closeSupportModal() {
 // Show welcome message from cas chatbot
 window.addEventListener('DOMContentLoaded', () => {
   appendMessage("Salut! Eu sunt CAS Chatbot, asistentul tau virtual. Cum te pot ajuta?", 'bot');
+  appendMessage("💡 Sfat: Poți scrie fără diacritice (ș, ă, î, ț) și voi înțelege întrebarea ta!", 'bot');
 });
 
 // function showRandomSuggestions() { ... } // removed

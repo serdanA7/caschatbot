@@ -2,8 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const path = require('path');
-const port = process.env.PORT || 3001; // Use Render's port
-
+const port = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 const qaPairs = [
@@ -68,23 +67,52 @@ const removeDiacritics = (str) => str.normalize('NFD').replace(/\p{Diacritic}/gu
 function significantWords(str) {
   return removeDiacritics(str)
     .split(/\s+/)
-    .filter(w => w.length >= 3);
+    .filter(w => w.length >= 2); // Reduced minimum length to 2 characters
+}
+
+function calculateMatchScore(userQuestion, qaQuestion) {
+  const userWords = significantWords(userQuestion);
+  const qaWords = significantWords(qaQuestion);
+  
+  if (userWords.length === 0) return 0;
+  
+  // Count exact word matches
+  const exactMatches = userWords.filter(w => qaWords.includes(w));
+  
+  // Count partial matches (words that contain user words)
+  const partialMatches = userWords.filter(userWord => 
+    qaWords.some(qaWord => qaWord.includes(userWord) || userWord.includes(qaWord))
+  );
+  
+  // Calculate score based on both exact and partial matches
+  const exactScore = exactMatches.length;
+  const partialScore = partialMatches.length * 0.5; // Partial matches count for less
+  
+  return exactScore + partialScore;
 }
 
 app.post('/ask', (req, res) => {
   const userQuestion = req.body.question || '';
-  const userWords = significantWords(userQuestion);
-  let match = null;
-  if (userWords.length > 0) {
-    match = qaPairs.find(q => {
-      const qWords = significantWords(q.question);
-      // Count how many user words are in the question
-      const common = userWords.filter(w => qWords.includes(w));
-      return common.length >= 2; // at least 2 significant words in common
-    });
+  
+  if (!userQuestion.trim()) {
+    return res.json({ answer: "Te rog să introduci o întrebare." });
   }
-  if (match) {
-    res.json({ answer: match.answer });
+  
+  // Find the best match
+  let bestMatch = null;
+  let bestScore = 0;
+  
+  qaPairs.forEach(qa => {
+    const score = calculateMatchScore(userQuestion, qa.question);
+    if (score > bestScore) {
+      bestScore = score;
+      bestMatch = qa;
+    }
+  });
+  
+  // Require at least 1 significant word match or a good partial match
+  if (bestScore >= 1) {
+    res.json({ answer: bestMatch.answer });
   } else {
     res.json({ answer: "Sorry, I don't know the answer to that. Please contact support for more help." });
   }
