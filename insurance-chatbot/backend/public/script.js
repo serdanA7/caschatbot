@@ -11,27 +11,18 @@ const questionsList = document.getElementById('questions-list');
 const allQuestions = [
   'Care este numărul maxim de medicamente compensate sau gratuite pe care le pot primi lunar pe o rețetă?',
   'Câte consultații pot avea cu o singură trimitere de la medicul de familie?',
-  'Cum verific dacă sunt asigurat?',
-  'Ce fac dacă nu sunt angajat dar vreau să fiu asigurat?',
-  'Cine poate fi coasigurat pe cardul meu de sănătate?',
-  'Pot primi servicii dacă nu am certificat de asigurat fizic?',
-  'Cât este valabil cardul național de sănătate?',
+  'Cum pot verifica dacă sunt asigurat la sănătate?',
+  'Câte consultații pot face cu o singură trimitere medicală?',
+  'Ce trebuie să fac dacă nu sunt angajat dar vreau asigurare medicală?',
+  'Cine poate fi coasigurat pe cardul meu?',
+  'Pot primi servicii dacă nu am cardul de sănătate fizic?',
+  'Care este valabilitatea cardului național de sănătate?',
   'Ce include pachetul de bază al serviciilor medicale?',
-  'Am dreptul la vizite medicale la domiciliu?',
-  'Sunt incluse medicamentele pentru boli cronice?',
   'Pot schimba medicul de familie?',
-  'Screening-urile preventive sunt decontate?',
-  'Copiii trebuie să fie asigurați separat?',
-  'Sunt acoperite consultațiile prenatale și nașterea?',
-  'Cum dovedești calitatea de asigurat?',
-  'Ce servicii sunt decontate gratuit de CNAS?',
-  'Ce nu decontează CNAS?',
-  'Un cetățean străin poate beneficia de asigurare în România?',
-  'De ce trebuie să plătesc contribuție CASS?',
-  'Am certificat de handicap și nu lucrez — pot fi asigurat?',
-  'Ce sunt programele naționale de sănătate?',
-  'Pot lucra ca liber-profesionist și fiu asigurat?',
-  'Cum obțin cardul european de asigurări?'
+  'Cum obțin cardul european de sănătate?',
+  'Sunt acoperite medicamentele pentru boli cronice?',
+  'Pot beneficia de consultații la domiciliu?',
+  'Sunt consultațiile prenatale acoperite?'
 ];
 
 let lastBotWasFallback = false;
