@@ -115,7 +115,7 @@ app.post('/ask', (req, res) => {
   });
   
   // Require at least 2 significant word matches with a good match ratio
-  if (bestScore >= 1.5) {
+  if (bestScore >= 2.5) {
     res.json({ answer: bestMatch.answer });
   } else {
     res.json({ answer: "Sorry, I don't know the answer to that. Please contact support for more help." });
