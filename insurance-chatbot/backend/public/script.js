@@ -9,20 +9,23 @@ const questionsList = document.getElementById('questions-list');
 
 // All hardcoded questions (sync with backend)
 const allQuestions = [
-  'Care este numărul maxim de medicamente compensate sau gratuite pe care le pot primi lunar pe o rețetă?',
-  'Câte consultații pot avea cu o singură trimitere de la medicul de familie?',
+  'Ce se întâmplă atunci când un asigurat, deși este internat în spital, trebuie să plătească medicamentele din bani proprii?',
   'Cum pot verifica dacă sunt asigurat la sănătate?',
   'Câte consultații pot face cu o singură trimitere medicală?',
-  'Ce trebuie să fac dacă nu sunt angajat dar vreau asigurare medicală?',
+  'Ce estecardul naţional desănătate?',
   'Cine poate fi coasigurat pe cardul meu?',
   'Pot primi servicii dacă nu am cardul de sănătate fizic?',
   'Care este valabilitatea cardului național de sănătate?',
-  'Ce include pachetul de bază al serviciilor medicale?',
-  'Pot schimba medicul de familie?',
-  'Cum obțin cardul european de sănătate?',
-  'Sunt acoperite medicamentele pentru boli cronice?',
-  'Pot beneficia de consultații la domiciliu?',
-  'Sunt consultațiile prenatale acoperite?'
+  'Cine poate recomanda îngrijiri medicale la domiciliu pentru un pacient imobilizat?',
+  'Care este durata maximă pentru care un adult poate beneficia de îngrijiri medicale la domiciliu?',
+  'Când se pot efectua consultațiile preventive la medicul de familie pentru adulți între 40 și 60 de ani?',
+  'Este necesar bilet de trimitere pentru consultațiile de planificare familială?',
+  'Câte zile poate beneficia un pacient cu paralizie cerebrală de proceduri de recuperare?',
+  'Poate medicul de familie elibera recomandări pentru dispozitive medicale?',
+  'Ce investigații sunt incluse în pachetul anual de prevenție pentru persoane de peste 60 de ani?',
+  'Ce se întâmplă dacă pacientul greșește de 5 ori codul PIN al cardului de sănătate?',
+  'Ce servicii dentare sunt gratuite pentru copiii sub 18 ani?',
+  'Care este valabilitatea biletului de trimitere pentru investigații paraclinice în cazul consultațiilor de prevenție?'
 ];
 
 let lastBotWasFallback = false;
