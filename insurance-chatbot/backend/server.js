@@ -84,11 +84,15 @@ function calculateMatchScore(userQuestion, qaQuestion) {
     qaWords.some(qaWord => qaWord.includes(userWord) || userWord.includes(qaWord))
   );
   
-  // Calculate score based on both exact and partial matches
+  // Calculate scores
   const exactScore = exactMatches.length;
-  const partialScore = partialMatches.length * 0.5; // Partial matches count for less
+  const partialScore = partialMatches.length * 0.3; // Reduced weight for partial matches
   
-  return exactScore + partialScore;
+  // Calculate match ratio (how many user words matched)
+  const matchRatio = exactMatches.length / userWords.length;
+  
+  // Return a weighted score that considers both count and ratio
+  return (exactScore + partialScore) * matchRatio;
 }
 
 app.post('/ask', (req, res) => {
@@ -110,8 +114,8 @@ app.post('/ask', (req, res) => {
     }
   });
   
-  // Require at least 1 significant word match or a good partial match
-  if (bestScore >= 1) {
+  // Require at least 2 significant word matches with a good match ratio
+  if (bestScore >= 1.5) {
     res.json({ answer: bestMatch.answer });
   } else {
     res.json({ answer: "Sorry, I don't know the answer to that. Please contact support for more help." });
