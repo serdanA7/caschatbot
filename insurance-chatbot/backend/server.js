@@ -128,7 +128,7 @@ app.post('/ask', (req, res) => {
   if (bestScore >= 1) {
     res.json({ answer: bestMatch.answer });
   } else {
-    res.json({ answer: "Sorry, I don't know the answer to that. Please contact support for more help." });
+    res.json({ answer: "Îmi pare rău, nu știu răspunsul la asta. Te rog să contactezi serviciul de asistență pentru mai mult ajutor." });
   }
 });
 
