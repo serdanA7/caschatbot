@@ -125,7 +125,7 @@ app.post('/ask', (req, res) => {
   });
   
   // Require at least 1 significant word match or a good partial match
-  if (bestScore >= 1) {
+  if (bestScore >= 2.5) {
     res.json({ answer: bestMatch.answer });
   } else {
     res.json({ answer: "Îmi pare rău, nu știu răspunsul la asta. Te rog să contactezi serviciul de asistență pentru mai mult ajutor." });
